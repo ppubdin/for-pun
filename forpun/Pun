@@ -1,0 +1,48 @@
+forpun/
+ ├── index.html
+ ├── assets/
+ │    └── keypress.mp3
+ └── README.md
+ <!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>จากกัสถึงปุน 💖</title>
+  <style>
+    body { background-color: #000; font-family: 'Sarabun', sans-serif; text-align: center; padding: 80px 30px; color: #ffb6c1; }
+    h1 { font-size: 28px; margin-bottom: 30px; }
+    #typewriter { font-size: 18px; white-space: pre-wrap; text-align: left; display: inline-block; border-right: 2px solid #ffb6c1; animation: blink 1s step-end infinite; max-width: 600px; }
+    @keyframes blink { 0%,100%{border-color:#ffb6c1;} 50%{border-color:transparent;} }
+    .button { margin-top: 40px; display: inline-block; background-color: #ff69b4; color: white; padding: 12px 24px; font-size: 16px; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; }
+    .button:hover { background-color: #ff85c1; }
+  </style>
+</head>
+<body>
+  <h1>จากกัสถึงปุน 💌</h1>
+  <div id="typewriter"></div>
+  <br>
+  <a class="button" href="https://your-photo-link.com" target="_blank">ดูรูปของเรา 📷</a>
+  <audio id="keySound" src="assets/keypress.mp3" preload="auto"></audio>
+  <script>
+    const message = `hi my dear. :)
+
+ลิ้งค์นี้ไม่มีอะไรพิเศษมากเท่ารักที่มีให้ปุนนะแค่อยากจะมาบอกอะไรนิดหน่อยยย :)
+
+...
+ด้วยรักและดุอาร์.`;
+    let i = 0;
+    const sound = document.getElementById("keySound");
+    function typeWriter() {
+      if(i<message.length){
+        document.getElementById("typewriter").textContent+=message.charAt(i);
+        if(message.charAt(i)!==" "&&message.charAt(i)!=="\n"){
+          sound.currentTime=0; sound.play();
+        }
+        i++;
+        setTimeout(typeWriter,30);
+      }
+    }
+    window.onload=typeWriter;
+  </script>
+</body>
+</html>
